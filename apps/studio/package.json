@@ -2,7 +2,7 @@
   "name": "studio",
   "version": "0.0.9",
   "private": true,
-  "packageManager": "npm@10.9.0",  // Added line
+  "packageManager": "npm@10.9.0",
   "scripts": {
     "dev": "next dev -p 8082",
     "dev:secrets:pull": "AWS_PROFILE=supabase-dev node ../../scripts/getSecrets.js -n local/studio",
