@@ -2,11 +2,11 @@
   builder = "dockerfile"
 
 [deploy]
-  startCommand = "npm start"
-  healthcheckPath = "/"
-  healthcheckTimeout = 100
-  restartPolicyType = "never"
+  startCommand = "node apps/studio/server.js"
+  healthcheckPath = "/api/profile"
+  healthcheckTimeout = 10
+  restartPolicyType = "on-failure"
 
-[[scripts]]
-  name = "pre-build"
-  run = "apt-get update && apt-get install -y jq && jq '. + { \"packageManager\": \"npm@10.9.0\" }' package.json > tmp.json && mv tmp.json package.json"
+[docker]
+  dockerfile = "apps/studio/Dockerfile"
+  buildContext = "."
