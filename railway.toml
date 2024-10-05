@@ -1,0 +1,12 @@
+[build]
+  builder = "dockerfile"
+
+[deploy]
+  startCommand = "npm start"
+  healthcheckPath = "/"
+  healthcheckTimeout = 100
+  restartPolicyType = "never"
+
+[[scripts]]
+  name = "pre-build"
+  run = "apt-get update && apt-get install -y jq && jq '. + { \"packageManager\": \"npm@10.9.0\" }' package.json > tmp.json && mv tmp.json package.json"
